@@ -3,7 +3,7 @@ namespace App\Reporting\Format;
 
 use App\Reporting\Report;
 
-class CsvFormatter implements FormatterInterface, DeserializerInterface
+class CsvFormatter implements FormatterInterface //, DeserializerInterface
  {
     /**
      * Undocumented function
@@ -20,19 +20,22 @@ class CsvFormatter implements FormatterInterface, DeserializerInterface
         return implode(";", $contents). ";" . $data;
     }
 
-    public function deserialize(string $str) : Report
-    {
-        //  "titre;date;5;6"
-        $contents = explode(";", $str);
-        // ["titre", "date", 5, 6]
-        $data = [
-            $contents[2],
-            $contents[3]
-        ];
+    // /**
+    //  * Undocumented function
+    //  *
+    //  * @param string $str
+    //  * @return Report
+    //  */
+    // public function deserialize(string $str) : Report
+    // {
+    //     //  "titre;date;5;6"
+    //     $contents = explode(";", $str);
+    //     // ["titre", "date", 5, 6]
+    //     $data = [
+    //         $contents[2],
+    //         $contents[3]
+    //     ];
 
-        return new Report($contents[1], $contents[0], $data);
-    }
-
-    
-
+    //     return new Report($contents[1], $contents[0], $data);
+    // }
 }
