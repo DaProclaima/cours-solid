@@ -4,7 +4,7 @@ namespace App\Reporting\Format;
 
 use App\Reporting\Report;
 
-class jsonFormatter implements FormatterInterface
+class JsonFormatter implements FormatterInterface
  {
     public function format(Report $report) : string
      {

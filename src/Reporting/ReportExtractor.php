@@ -2,26 +2,28 @@
 
 namespace App\Reporting;
 
-use App\Reporting\Format\CsvFormatter;
-use App\Reporting\Format\HtmlFormatter;
-use App\Reporting\Format\HtmlSpecialFormatter;
-use App\Reporting\Format\jsonFormatter;
+use App\Reporting\Format\FormatterInterface;
+
 
 class ReportExtractor
 {
 
     protected $formatters = [];
 
-    public function addHtmlFormatter(HtmlFormatter $htmlFormatter) {
-        $this->formatters[] = $htmlFormatter;
-    }
+    // public function addHtmlFormatter(HtmlFormatter $htmlFormatter) {
+    //     $this->formatters[] = $htmlFormatter;
+    // }
 
-    public function addJsonFormatter(jsonFormatter $jsonFormatter) {
-        $this->formatters[] = $jsonFormatter;
-    }
+    // public function addJsonFormatter(jsonFormatter $jsonFormatter) {
+    //     $this->formatters[] = $jsonFormatter;
+    // }
 
-    public function addCsvFormatter(CsvFormatter $csvFormatter) {
-        $this->formatters[] = $csvFormatter;
+    // public function addCsvFormatter(CsvFormatter $csvFormatter) {
+    //     $this->formatters[] = $csvFormatter;
+    // }
+
+    public function addFormatter(FormatterInterface $formatter) {
+        $this->formatters[] = $formatter;
     }
     
     /**

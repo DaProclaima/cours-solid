@@ -28,10 +28,14 @@ class BulkReportController
 
         $extractor = new ReportExtractor();
 
-    //  add a new HtmlFormatter is useless since HtmlSpecialFormatter depends of its methods
-        $extractor->addHtmlFormatter(new HtmlSpecialFormatter);
-        $extractor->addJsonFormatter(new jsonFormatter);
-        $extractor->addCsvFormatter(new CsvFormatter);
+        // $extractor->addHtmlFormatter(new HtmlSpecialFormatter);
+        // $extractor->addJsonFormatter(new jsonFormatter);
+        // $extractor->addCsvFormatter(new CsvFormatter);
+        
+        $extractor->addFormatter(new HtmlFormatter);
+        $extractor->addFormatter(new HtmlSpecialFormatter);
+        $extractor->addFormatter(new JsonFormatter);
+        $extractor->addFormatter(new CsvFormatter);
 
         $results = $extractor->process($report);
 
