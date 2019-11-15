@@ -28,11 +28,12 @@ class HtmlFormatter implements FormatterInterface
         ";
     }
 
-    public function deserialize(string $str): Report
-    {
-        throw new Exception("Il est impossible de désérialiser du HTML");
-        return new Report("", "", []);
-        // Faire ça c'est débile
-    }
+    // public function deserialize(string $str): Report
+    // {
+    //     throw new Exception("Il est impossible de désérialiser du HTML");
+    //     return new Report("", "", []);
+    //     // Faire ça c'est débile
+    // }
+    
 }
 // Do I have several reason to change this class? No, the SRP is respected now. The only reason why we might change the class is if I write the Json differently
