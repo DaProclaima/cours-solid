@@ -3,8 +3,10 @@ namespace App\Reporting\Format;
 
 use App\Reporting\Report;
 
-class HtmlSpecialFormatter extends HtmlFormatter {
-    public function formatToHtml( Report $report)
+// Inherits of HtmlFormatter implementing FormatterInterface
+class HtmlSpecialFormatter extends HtmlFormatter
+ {
+    public function format( Report $report)  : string
     {
         $html = parent::formatToHtml($report);
         return '
