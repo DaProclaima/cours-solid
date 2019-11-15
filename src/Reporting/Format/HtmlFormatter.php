@@ -7,17 +7,17 @@ use App\Reporting\Report;
 class HtmlFormatter {
     public function formatToHtml(Report $report){
     
-        $content = $report->getContents();
+        $contents = $report->getContents();
 
         $data = "";
 
-        foreach ($content['data'] as $value) {
+        foreach ($contents['data'] as $value) {
             $data .= "<li>$value</li>";
         }
 
         return "
-            <h2>{$content['title']}</h2>
-            <em>Date : {$content['date']}</em>
+            <h2>{$contents['title']}</h2>
+            <em>Date : {$contents['date']}</em>
             <h4>Données : </h4>
             <ul>
                 $data
