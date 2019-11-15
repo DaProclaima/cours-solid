@@ -2,6 +2,7 @@
 
 namespace App\Reporting;
 
+use App\Reporting\Format\CsvFormatter;
 use App\Reporting\Format\HtmlFormatter;
 use App\Reporting\Format\HtmlSpecialFormatter;
 use App\Reporting\Format\jsonFormatter;
@@ -9,6 +10,20 @@ use App\Reporting\Format\jsonFormatter;
 class ReportExtractor
 {
 
+    protected $formatters = [];
+
+    public function addHtmlFormatter(HtmlFormatter $htmlFormatter) {
+        $this->formatters[] = $htmlFormatter;
+    }
+
+    public function addJsonFormatter(jsonFormatter $jsonFormatter) {
+        $this->formatters[] = $jsonFormatter;
+    }
+
+    public function addCsvFormatter(CsvFormatter $csvFormatter) {
+        $this->formatters[] = $csvFormatter;
+    }
+    
     /**
      * Doit afficher l'ensemble des formats possibles pour un rapport en se servant
      * des formatters ajoutés dans le tableau
@@ -21,13 +36,17 @@ class ReportExtractor
     {
         $results = [];
 
-        $htmlFormatter = new HtmlFormatter;
-        $htmlSpecialFormtatter = new HtmlSpecialFormatter;
-        $JsonFormatter = new jsonFormatter;
+        // $htmlFormatter = new HtmlFormatter;
+        // $htmlSpecialFormtatter = new HtmlSpecialFormatter;
+        // $JsonFormatter = new jsonFormatter;
 
-        $results[] = $htmlFormatter->format($report);
-        $results[] = $JsonFormatter->format($report);
-        $results[] = $htmlSpecialFormtatter->format($report);
+        // $results[] = $htmlFormatter->format($report);
+        // $results[] = $JsonFormatter->format($report);
+        // $results[] = $htmlSpecialFormtatter->format($report);
+
+        foreach($this->formatters as $formatter) {
+            $results[] = $formatter->format($report);
+        }
 
         return $results;
     }
